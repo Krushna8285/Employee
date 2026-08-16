@@ -1,0 +1,453 @@
+{% extends "base.html" %}
+
+{% block title %}
+Register - Employee Management System
+{% endblock %}
+
+{% block content %}
+
+<style>
+
+    /* ================================
+       REGISTER PAGE
+    ================================= */
+
+    .register-wrapper {
+        min-height: 85vh;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        padding: 40px 15px;
+    }
+
+
+    /* ================================
+       REGISTER CARD
+    ================================= */
+
+    .register-card {
+        width: 100%;
+        max-width: 480px;
+
+        border: none;
+        border-radius: 22px;
+
+        overflow: hidden;
+
+        background: rgba(255, 255, 255, 0.97);
+
+        box-shadow:
+            0 20px 50px rgba(0, 0, 0, 0.20);
+
+        animation: cardEntry 0.8s ease;
+    }
+
+
+    @keyframes cardEntry {
+
+        from {
+            opacity: 0;
+            transform: translateY(40px) scale(0.95);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+    }
+
+
+    /* ================================
+       HEADER
+    ================================= */
+
+    .register-header {
+
+        padding: 30px 20px;
+
+        text-align: center;
+
+        color: white;
+
+        background:
+            linear-gradient(
+                135deg,
+                #0d6efd,
+                #4f46e5,
+                #7c3aed
+            );
+    }
+
+
+    .register-icon {
+
+        width: 70px;
+        height: 70px;
+
+        margin: 0 auto 15px;
+
+        display: flex;
+
+        align-items: center;
+        justify-content: center;
+
+        border-radius: 50%;
+
+        font-size: 32px;
+
+        background: rgba(255,255,255,0.20);
+
+        border: 2px solid rgba(255,255,255,0.35);
+
+        transition: 0.3s;
+    }
+
+
+    .register-icon:hover {
+
+        transform:
+            rotate(10deg)
+            scale(1.1);
+    }
+
+
+    .register-header h3 {
+
+        margin: 0;
+
+        font-weight: 700;
+
+        letter-spacing: 0.5px;
+    }
+
+
+    .register-header p {
+
+        margin-top: 8px;
+
+        margin-bottom: 0;
+
+        opacity: 0.85;
+    }
+
+
+    /* ================================
+       BODY
+    ================================= */
+
+    .register-body {
+
+        padding: 32px;
+    }
+
+
+    /* ================================
+       FORM
+    ================================= */
+
+    .form-label {
+
+        font-weight: 600;
+
+        color: #333;
+    }
+
+
+    .form-control {
+
+        padding: 13px 15px;
+
+        border-radius: 12px;
+
+        border: 1px solid #ddd;
+
+        transition: all 0.3s ease;
+    }
+
+
+    .form-control:focus {
+
+        border-color: #4f46e5;
+
+        box-shadow:
+            0 0 0 4px
+            rgba(79,70,229,0.12);
+
+        transform: translateY(-2px);
+    }
+
+
+    /* ================================
+       REGISTER BUTTON
+    ================================= */
+
+    .register-btn {
+
+        padding: 13px;
+
+        border: none;
+
+        border-radius: 12px;
+
+        font-size: 16px;
+
+        font-weight: 600;
+
+        background:
+            linear-gradient(
+                135deg,
+                #0d6efd,
+                #4f46e5
+            );
+
+        transition: all 0.3s ease;
+    }
+
+
+    .register-btn:hover {
+
+        transform: translateY(-3px);
+
+        box-shadow:
+            0 10px 25px
+            rgba(13,110,253,0.35);
+    }
+
+
+    .register-btn:active {
+
+        transform: scale(0.97);
+    }
+
+
+    /* ================================
+       LOGIN LINK
+    ================================= */
+
+    .login-link {
+
+        color: #4f46e5;
+
+        text-decoration: none;
+
+        font-weight: 700;
+
+        transition: 0.3s;
+    }
+
+
+    .login-link:hover {
+
+        color: #0d6efd;
+
+        text-decoration: underline;
+    }
+
+
+    /* ================================
+       FLASH MESSAGE
+    ================================= */
+
+    .alert {
+
+        border-radius: 10px;
+
+        font-size: 14px;
+    }
+
+
+    /* ================================
+       MOBILE
+    ================================= */
+
+    @media (max-width: 576px) {
+
+        .register-wrapper {
+
+            padding: 25px 15px;
+        }
+
+        .register-body {
+
+            padding: 25px;
+        }
+
+        .register-card {
+
+            border-radius: 18px;
+        }
+
+    }
+
+</style>
+
+
+<div class="register-wrapper">
+
+    <div class="register-card">
+
+
+        <!-- ==========================
+             HEADER
+        =========================== -->
+
+        <div class="register-header">
+
+            <div class="register-icon">
+                📝
+            </div>
+
+            <h3>
+                Create Account
+            </h3>
+
+            <p>
+                Join the Employee Management System
+            </p>
+
+        </div>
+
+
+        <!-- ==========================
+             BODY
+        =========================== -->
+
+        <div class="register-body">
+
+
+            <!-- Flash Messages -->
+
+            {% with messages = get_flashed_messages(with_categories=true) %}
+
+                {% if messages %}
+
+                    {% for category, message in messages %}
+
+                        <div
+                            class="alert alert-{{ category }} alert-dismissible fade show">
+
+                            {{ message }}
+
+                            <button
+                                type="button"
+                                class="btn-close"
+                                data-bs-dismiss="alert">
+                            </button>
+
+                        </div>
+
+                    {% endfor %}
+
+                {% endif %}
+
+            {% endwith %}
+
+
+            <!-- ==========================
+                 REGISTER FORM
+            =========================== -->
+
+            <form action="/register" method="POST">
+
+
+                <!-- Full Name -->
+
+                <div class="mb-3">
+
+                    <label class="form-label">
+                        Full Name
+                    </label>
+
+                    <input
+                        type="text"
+                        name="fullname"
+                        class="form-control"
+                        placeholder="Enter your full name"
+                        autocomplete="name"
+                        required>
+
+                </div>
+
+
+                <!-- Email -->
+
+                <div class="mb-3">
+
+                    <label class="form-label">
+                        Email Address
+                    </label>
+
+                    <input
+                        type="email"
+                        name="email"
+                        class="form-control"
+                        placeholder="Enter your email"
+                        autocomplete="email"
+                        required>
+
+                </div>
+
+
+                <!-- Password -->
+
+                <div class="mb-4">
+
+                    <label class="form-label">
+                        Password
+                    </label>
+
+                    <input
+                        type="password"
+                        name="password"
+                        class="form-control"
+                        placeholder="Minimum 6 characters"
+                        minlength="6"
+                        autocomplete="new-password"
+                        required>
+
+                </div>
+
+
+                <!-- Register -->
+
+                <button
+                    type="submit"
+                    class="btn btn-primary register-btn w-100">
+
+                    🚀 Create Account
+
+                </button>
+
+
+            </form>
+
+
+            <!-- Login -->
+
+            <div class="text-center mt-4">
+
+                <span class="text-muted">
+                    Already have an account?
+                </span>
+
+                <a
+                    href="/login"
+                    class="login-link">
+
+                    Login Here
+
+                </a>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

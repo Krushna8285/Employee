@@ -1,0 +1,162 @@
+{% extends "base.html" %}
+
+{% block title %}
+Edit Attendance
+{% endblock %}
+
+{% block content %}
+
+<div class="row justify-content-center">
+
+    <div class="col-md-7">
+
+        <div class="card shadow border-0">
+
+            <div class="card-header bg-warning">
+
+                <h3 class="mb-0">
+                    ✏️ Edit Attendance
+                </h3>
+
+            </div>
+
+
+            <div class="card-body p-4">
+
+                <form
+                    action="/update_attendance/{{ attendance.id }}"
+                    method="POST">
+
+
+                    <!-- Employee -->
+
+                    <div class="mb-3">
+
+                        <label class="form-label fw-bold">
+                            Employee
+                        </label>
+
+                        <select
+                            name="employee_id"
+                            class="form-select"
+                            required>
+
+                            {% for employee in employees %}
+
+                            <option
+                                value="{{ employee.id }}"
+                                {% if employee.id == attendance.employee_id %}
+                                    selected
+                                {% endif %}>
+
+                                {{ employee.emp_id }}
+                                -
+                                {{ employee.fullname }}
+
+                            </option>
+
+                            {% endfor %}
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- Date -->
+
+                    <div class="mb-3">
+
+                        <label class="form-label fw-bold">
+                            Attendance Date
+                        </label>
+
+                        <input
+                            type="date"
+                            name="attendance_date"
+                            class="form-control"
+                            value="{{ attendance.attendance_date }}"
+                            required>
+
+                    </div>
+
+
+                    <!-- Status -->
+
+                    <div class="mb-3">
+
+                        <label class="form-label fw-bold">
+                            Status
+                        </label>
+
+                        <select
+                            name="status"
+                            class="form-select"
+                            required>
+
+                            <option
+                                value="Present"
+                                {% if attendance.status == "Present" %}
+                                    selected
+                                {% endif %}>
+
+                                Present
+
+                            </option>
+
+
+                            <option
+                                value="Absent"
+                                {% if attendance.status == "Absent" %}
+                                    selected
+                                {% endif %}>
+
+                                Absent
+
+                            </option>
+
+
+                            <option
+                                value="Leave"
+                                {% if attendance.status == "Leave" %}
+                                    selected
+                                {% endif %}>
+
+                                Leave
+
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- Buttons -->
+
+                    <button
+                        type="submit"
+                        class="btn btn-success">
+
+                        💾 Update Attendance
+
+                    </button>
+
+
+                    <a
+                        href="/attendance"
+                        class="btn btn-secondary">
+
+                        Cancel
+
+                    </a>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

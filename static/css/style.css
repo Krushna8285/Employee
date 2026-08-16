@@ -1,0 +1,174 @@
+/* body{
+    margin:0;
+    font-family:Arial;
+    background:#f5f5f5;
+    text-align:center;
+}
+
+h1{
+    color:darkblue;
+    margin-top:80px;
+}
+
+h3{
+    color:gray;
+} */
+
+/* ================================
+   GENERAL
+================================ */
+
+body {
+    min-height: 100vh;
+    background-color: #f5f7fa;
+}
+
+.card {
+    border-radius: 12px;
+}
+
+.btn {
+    border-radius: 8px;
+}
+
+.navbar-brand {
+    letter-spacing: 0.5px;
+}
+
+
+/* ================================
+   DASHBOARD
+================================ */
+
+.card h3 {
+    font-weight: 700;
+}
+
+.card h5 {
+    font-weight: 600;
+}
+
+
+/* ================================
+   TABLE
+================================ */
+
+.table {
+    vertical-align: middle;
+}
+
+.table th {
+    white-space: nowrap;
+}
+
+.table td {
+    vertical-align: middle;
+}
+
+
+/* ================================
+   EMPLOYEE PHOTO
+================================ */
+
+.employee-photo {
+    width: 220px;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+
+/* ================================
+   FORM
+================================ */
+
+.form-control,
+.form-select {
+    border-radius: 8px;
+}
+
+.form-control:focus,
+.form-select:focus {
+    box-shadow: none;
+}
+
+
+/* ================================
+   MOBILE RESPONSIVE
+================================ */
+
+@media (max-width: 768px) {
+
+    .navbar .container {
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px;
+    }
+
+    .navbar-brand {
+        font-size: 18px;
+    }
+
+    .navbar .btn {
+        font-size: 12px;
+        margin: 2px;
+    }
+
+    h2 {
+        font-size: 24px;
+    }
+
+    h3 {
+        font-size: 21px;
+    }
+
+    .card-body {
+        padding: 18px;
+    }
+
+    .table {
+        font-size: 13px;
+    }
+
+    .employee-photo {
+        width: 160px;
+        height: 160px;
+    }
+
+}
+
+
+/* ================================
+   SMALL MOBILE
+================================ */
+
+@media (max-width: 576px) {
+
+    .navbar .container {
+        align-items: center;
+    }
+
+    .navbar-brand {
+        text-align: center;
+        font-size: 16px;
+    }
+
+    .navbar .btn {
+        padding: 5px 8px;
+        font-size: 11px;
+    }
+
+    .container {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    .btn {
+        font-size: 13px;
+    }
+
+    .card {
+        margin-bottom: 15px;
+    }
+
+}

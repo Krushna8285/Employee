@@ -1,0 +1,232 @@
+{% extends "base.html" %}
+
+{% block title %}
+Dashboard
+{% endblock %}
+
+{% block content %}
+
+<div class="mb-4">
+
+    <h2>
+        👋 Welcome, {{ username }}
+    </h2>
+
+    <p class="text-muted">
+        Employee Management System Dashboard
+    </p>
+
+</div>
+
+
+<!-- STATISTICS -->
+
+<div class="row g-4 mb-5">
+
+
+    <!-- Total Employees -->
+
+    <div class="col-md-3">
+
+        <div class="card shadow border-0 h-100">
+
+            <div class="card-body text-center">
+
+                <h1 class="text-primary">
+                    👥
+                </h1>
+
+                <h3>
+                    {{ total_employees }}
+                </h3>
+
+                <p class="text-muted mb-0">
+                    Total Employees
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Present -->
+
+    <div class="col-md-3">
+
+        <div class="card shadow border-0 h-100">
+
+            <div class="card-body text-center">
+
+                <h1 class="text-success">
+                    ✅
+                </h1>
+
+                <h3>
+                    {{ present_today }}
+                </h3>
+
+                <p class="text-muted mb-0">
+                    Present Today
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Absent -->
+
+    <div class="col-md-3">
+
+        <div class="card shadow border-0 h-100">
+
+            <div class="card-body text-center">
+
+                <h1 class="text-danger">
+                    ❌
+                </h1>
+
+                <h3>
+                    {{ absent_today }}
+                </h3>
+
+                <p class="text-muted mb-0">
+                    Absent Today
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Leave -->
+
+    <div class="col-md-3">
+
+        <div class="card shadow border-0 h-100">
+
+            <div class="card-body text-center">
+
+                <h1 class="text-warning">
+                    🏖️
+                </h1>
+
+                <h3>
+                    {{ leave_today }}
+                </h3>
+
+                <p class="text-muted mb-0">
+                    On Leave Today
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- QUICK ACTIONS -->
+
+<h4 class="mb-3">
+    Quick Actions
+</h4>
+
+
+<div class="row g-4">
+
+
+    <div class="col-md-4">
+
+        <div class="card shadow border-0">
+
+            <div class="card-body">
+
+                <h5>
+                    👤 Employee Management
+                </h5>
+
+                <p class="text-muted">
+                    Add, view, edit and delete employees.
+                </p>
+
+                <a href="/employees"
+                   class="btn btn-primary">
+
+                    View Employees
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="col-md-4">
+
+        <div class="card shadow border-0">
+
+            <div class="card-body">
+
+                <h5>
+                    📝 Attendance
+                </h5>
+
+                <p class="text-muted">
+                    Mark and manage employee attendance.
+                </p>
+
+                <a href="/mark_attendance"
+                   class="btn btn-success">
+
+                    Mark Attendance
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="col-md-4">
+
+        <div class="card shadow border-0">
+
+            <div class="card-body">
+
+                <h5>
+                    📋 Attendance History
+                </h5>
+
+                <p class="text-muted">
+                    View all attendance records.
+                </p>
+
+                <a href="/attendance"
+                   class="btn btn-dark">
+
+                    View Attendance
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

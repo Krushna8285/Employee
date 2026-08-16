@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        {% block title %}
+        Employee Management System
+        {% endblock %}
+    </title>
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body class="bg-light">
+
+
+<!-- NAVBAR -->
+
+<nav class="navbar navbar-dark bg-dark">
+
+    <div class="container">
+
+        <a class="navbar-brand fw-bold"
+           href="/dashboard">
+
+            Employee Management System
+
+        </a>
+        
+
+        {% if session.get("user") %}
+
+        <div>
+
+            <a href="/dashboard"
+               class="btn btn-outline-light btn-sm">
+
+                Dashboard
+
+            </a>
+
+            <a href="/employees"
+               class="btn btn-outline-light btn-sm">
+
+                Employees
+
+            </a>
+
+            <a href="/attendance"
+               class="btn btn-outline-light btn-sm">
+
+                Attendance
+
+            </a>
+
+            <a href="/logout"
+               class="btn btn-danger btn-sm">
+
+                Logout
+
+            </a>
+
+        </div>
+
+        {% endif %}
+
+    </div>
+
+</nav>
+
+
+<!-- FLASH MESSAGES -->
+
+<div class="container mt-3">
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+
+        {% if messages %}
+
+            {% for category, message in messages %}
+
+                <div
+                    class="alert alert-{{ category }} alert-dismissible fade show"
+                    role="alert">
+
+                    {{ message }}
+
+                    <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="alert">
+                    </button>
+
+                </div>
+
+            {% endfor %}
+
+        {% endif %}
+
+    {% endwith %}
+
+</div>
+
+
+<!-- PAGE CONTENT -->
+
+<div class="container mt-4">
+
+    {% block content %}
+
+    {% endblock %}
+
+</div>
+
+
+<script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js">
+</script>
+
+</body>
+
+</html>

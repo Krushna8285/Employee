@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Add Employee</title>
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+
+</head>
+
+<body class="bg-light">
+
+
+<!-- NAVBAR -->
+
+<nav class="navbar navbar-dark bg-dark">
+
+    <div class="container">
+
+        <a class="navbar-brand fw-bold"
+           href="/dashboard">
+
+            Employee Management System
+
+        </a>
+
+        <a href="/logout"
+           class="btn btn-danger">
+
+            Logout
+
+        </a>
+
+    </div>
+
+</nav>
+
+
+<!-- FORM -->
+
+<div class="container mt-5 mb-5">
+
+    <div class="card shadow border-0">
+
+        <div class="card-header bg-primary text-white">
+
+            <h3 class="mb-0">
+                ➕ Add New Employee
+            </h3>
+
+        </div>
+
+
+        <div class="card-body p-4">
+
+            <form action="/save_employee"
+                  method="POST"
+                  enctype="multipart/form-data">
+
+
+                <div class="row g-3">
+
+
+                    <!-- Employee ID -->
+
+                    <div class="col-md-6">
+
+                        <label class="form-label">
+                            Employee ID
+                        </label>
+
+                        <input
+                            type="text"
+                            name="emp_id"
+                            class="form-control"
+                            placeholder="Enter Employee ID"
+                            required>
+
+                    </div>
+
+
+                    <!-- Full Name -->
+
+                    <div class="col-md-6">
+
+                        <label class="form-label">
+                            Full Name
+                        </label>
+
+                        <input
+                            type="text"
+                            name="fullname"
+                            class="form-control"
+                            placeholder="Enter Full Name"
+                            required>
+
+                    </div>
+
+
+                    <!-- Email -->
+
+                    <div class="col-md-6">
+
+                        <label class="form-label">
+                            Email
+                        </label>
+
+                        <input
+                            type="email"
+                            name="email"
+                            class="form-control"
+                            placeholder="Enter valid email address"
+                            required
+                            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                            title="please enter a valid email address, e.g. example@gmail.com">
+
+                    </div>
+
+
+                    <!-- Phone -->
+
+                    <div class="col-md-6">
+
+                        <label class="form-label">
+                            Phone
+                        </label>
+
+                        <input
+                            type="tel"
+                            name="phone"
+                            class="form-control"
+                            placeholder="Enter 10 digit mobile phone number"
+                            maxlength="10"
+                            minlength="10"
+                            pattern="[0-9]{10}"
+                            inputmode="numeric"
+                            required>
+
+                    </div>
+
+
+                    <!-- Department -->
+
+                    <div class="col-md-6">
+
+                        <label class="form-label">
+                            Department
+                        </label>
+
+                        <select
+                            name="department"
+                            class="form-select"
+                            required>
+
+                            <option value="">
+                                Select Department
+                            </option>
+
+                            <option value="IT">
+                                IT
+                            </option>
+
+                            <option value="HR">
+                                HR
+                            </option>
+
+                            <option value="Finance">
+                                Finance
+                            </option>
+
+                            <option value="Marketing">
+                                Marketing
+                            </option>
+
+                            <option value="Sales">
+                                Sales
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- Designation -->
+
+                    <div class="col-md-6">
+
+                        <label class="form-label">
+                            Designation
+                        </label>
+
+                        <input
+                            type="text"
+                            name="designation"
+                            class="form-control"
+                            placeholder="e.g. Python Developer"
+                            required>
+
+                    </div>
+
+
+                    <!-- Salary -->
+
+                    <div class="col-md-6">
+
+                        <label class="form-label">
+                            Salary
+                        </label>
+
+                        <input
+                            type="number"
+                            name="salary"
+                            class="form-control"
+                            placeholder="Enter Salary"
+                            min="0"
+                            required>
+
+                    </div>
+
+
+                    <!-- Joining Date -->
+
+                    <div class="col-md-6">
+
+                        <label class="form-label">
+                            Joining Date
+                        </label>
+
+                        <input
+                            type="date"
+                            name="joining_date"
+                            class="form-control"
+                            required>
+
+                    </div>
+
+
+                    <!-- Photo -->
+
+                    <div class="col-md-12">
+
+                        <label class="form-label">
+                            Employee Photo
+                        </label>
+
+                        <input
+                            type="file"
+                            name="photo"
+                            class="form-control"
+                            accept="image/*">
+
+                        <small class="text-muted">
+                            JPG, JPEG, PNG images only
+                        </small>
+
+                    </div>
+
+
+                </div>
+
+
+                <!-- BUTTONS -->
+
+                <div class="mt-4">
+
+                    <button
+                        type="submit"
+                        class="btn btn-success">
+
+                        💾 Save Employee
+
+                    </button>
+
+
+                    <a
+                        href="/employees"
+                        class="btn btn-secondary">
+
+                        Cancel
+
+                    </a>
+
+                </div>
+
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js">
+</script>
+
+</body>
+
+</html>
