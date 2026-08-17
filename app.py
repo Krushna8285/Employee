@@ -530,13 +530,14 @@ def save_employee():
 
 
     except Exception as e:
+        print("SAVE EMPLOYEE ERROR:", repr(e), flush=True)
 
         if conn:
             conn.rollaback()
-        print("SAVE EMPLOYEE ERROR:", repr(e), flush=True)
+        
 
 
-        flash(f"Database Error: {str(e)}", "danger")
+        flash("Error while adding employee!", "danger")
 
         
         return redirect("/add_employee")
