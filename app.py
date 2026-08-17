@@ -1318,6 +1318,38 @@ def search():
         employees=employees
     )
 
+### Temporary route add
+
+@app.route("/debug-db")
+def debug_db():
+    conn = None
+    cursor = None
+
+    try:
+        conn = get_connection()
+        cursor = conn.cursor(dictionary=True)
+
+        cursor.execute("SELECT DATABASE() AS db, @@hostname AS host")
+        info = cursor.fetchone()
+
+        cursor.execute("SHOW CREATE TABLE employees")
+        table_info = cursor.fetchone()
+
+        return {
+            "database": info,
+            "employees_table": table_info
+        }
+
+    except Exception as e:
+        return {
+            "error": str(e)
+        }, 500
+
+    finally:
+        if cursor:
+            cursor.close()
+        if conn:
+            conn.close()
 
 # =====================================================
 # LOGOUT
